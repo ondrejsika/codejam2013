@@ -6,10 +6,19 @@ def is_lower(row, n):
             return False
     return True
 
+def max2d(list2d):
+    m = 0
+    for row in list2d.rows():
+        for item in row:
+            if item > m:
+                m = item
+    print m
+    return m
+
 def can_be_cuted(original):
     original = List2d(original)
     tmp = List2d(len(original.cols()), len(original.rows()), 100)
-    for n in [3, 2, 1]:
+    for n in reversed(range(max2d(original)+1)):
         for row_p in range(len(tmp.rows())):
             if is_lower(original.row(row_p), n):
                 for j in range(len(tmp.cols())):
